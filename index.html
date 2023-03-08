@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title class="title">Web Scraper</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+  <style>
+    #scrape-button {
+      margin-top: 8px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      padding: 5px;
+    }
+
+    body {
+      padding: 12px;
+    }
+  </style>
+  <script>
+    // Script that shows a loading bar for five seconds the shows a link when clicked
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById("scrape-button").innerHTML = "Loading...";
+      setTimeout(function () {
+        document.getElementById("scrape-button").innerHTML = "<h4>SCRAPE</h4>";
+        document.getElementById("scrape-link").href = "example.csv";
+        document.getElementById("scrape-link").innerHTML = "Download CSV";
+      }, 5000);
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Coding All Stars Second Task</h1>
+  <h2 class="title">Web Scraper</h2>
+  <div class="container">
+
+    <hr>
+
+    <li>Enter the details below to scrape the data from the websites</li>
+    <form onsubmit="submitForm(event)">
+      <div class="form-group">
+        <div>
+          <label class="form-check-label1">real.discount.com
+            <input type="checkbox" name="checkbox1" value="checkbox1" class="form-check-input1">
+          </label>
+        </div>
+
+        <div>
+          <label class="form-check-label2">discudemy.com
+            <input type="checkbox" name="checkbox2" value="checkbox2" class="form-check-input2">
+          </label>
+        </div>
+
+        <div><label>cuponscorpion.com <input type="checkbox" name="checkbox3" value="checkbox3"
+              class="form-check-input3"></label></div>
+
+
+
+        <li>Enter the maximum amount of posts you'd like to retrieve</li>
+        <div>
+          <label class="max-amount">Max Amount</label>
+          <input type="number" name="integer" min="0" class="form-control1">
+        </div>
+
+        <li>Enter the course date and the number of retries</li>
+        <div>
+          <label class="course-date">Course Date</label>
+          <select name="year" class="form-control2">
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="retries">Retries</label>
+          <select name="retries" class="form-control-3">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+
+        <button type="submit" id="scrape-button" class="btn-primary">
+          <h4>SCRAP</h4>
+        </button>
+
+        <a id="scrape-link" href="#" target="_blank"></a>
+    </form>
+  </div>
+
+</body>
+
+</html>
