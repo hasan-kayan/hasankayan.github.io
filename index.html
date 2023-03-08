@@ -23,15 +23,23 @@
     }
   </style>
   <script>
-    // Script that shows a loading bar for five seconds the shows a link when clicked
     function submitForm(e) {
       e.preventDefault();
       document.getElementById("scrape-button").innerHTML = "Loading...";
-      setTimeout(function () {
-        document.getElementById("scrape-button").innerHTML = "<h4>SCRAPE</h4>";
-        document.getElementById("scrape-link").href = "example.csv";
-        document.getElementById("scrape-link").innerHTML = "Download CSV";
-      }, 5000);
+      fetch('/example.csv')
+        .then(response => response.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'example.csv';
+          a.click();
+          setTimeout(function () {
+            document.getElementById("scrape-button").innerHTML = "<h4>SCRAPE</h4>";
+            document.getElementById("scrape-link").innerHTML = "Download CSV";
+          }, 5000);
+        })
+        .catch(() => alert('Error downloading file'));
     }
   </script>
 </head>
